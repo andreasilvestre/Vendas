@@ -1,0 +1,14 @@
+C:\Users\Usuario\source\repos\Vendas\Vendas\bin\Debug\Vendas.exe.config
+C:\Users\Usuario\source\repos\Vendas\Vendas\bin\Debug\Vendas.exe
+C:\Users\Usuario\source\repos\Vendas\Vendas\bin\Debug\Vendas.pdb
+C:\Users\Usuario\source\repos\Vendas\Vendas\obj\Debug\Vendas.csproj.AssemblyReference.cache
+C:\Users\Usuario\source\repos\Vendas\Vendas\obj\Debug\Vendas.csproj.SuggestedBindingRedirects.cache
+C:\Users\Usuario\source\repos\Vendas\Vendas\obj\Debug\Vendas.Form_Principal.resources
+C:\Users\Usuario\source\repos\Vendas\Vendas\obj\Debug\Vendas.Properties.Resources.resources
+C:\Users\Usuario\source\repos\Vendas\Vendas\obj\Debug\Vendas.csproj.GenerateResource.cache
+C:\Users\Usuario\source\repos\Vendas\Vendas\obj\Debug\Vendas.csproj.CoreCompileInputs.cache
+C:\Users\Usuario\source\repos\Vendas\Vendas\obj\Debug\Vendas.exe
+C:\Users\Usuario\source\repos\Vendas\Vendas\obj\Debug\Vendas.pdb
+C:\Users\Usuario\source\repos\Vendas\Vendas\obj\Debug\Vendas.Form_Cliente.resources
+C:\Users\Usuario\source\repos\Vendas\Vendas\obj\Debug\Vendas.Form_Produto.resources
+C:\Users\Usuario\source\repos\Vendas\Vendas\obj\Debug\Vendas.Form_Vender.resources
