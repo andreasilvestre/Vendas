@@ -18,6 +18,7 @@ estoque int,
 );
 
 select * from sys.tables;
+select * from sys.databases;
 
 select * from Venda;
 
@@ -61,3 +62,7 @@ INDEX fk_Produto_ItemVenda_idx (id_Produto ASC),
 );
 
 select * from sys.tables;
+
+select * from cliente;
+
+select * from produto;

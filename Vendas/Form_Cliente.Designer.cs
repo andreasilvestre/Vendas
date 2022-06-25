@@ -37,6 +37,7 @@
             this.maskedTextBox_CPF = new System.Windows.Forms.MaskedTextBox();
             this.maskedTextBox_Telefone = new System.Windows.Forms.MaskedTextBox();
             this.button_Cadastrar = new System.Windows.Forms.Button();
+            this.button_Limpar = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label_Nome
@@ -109,19 +110,30 @@
             // 
             // button_Cadastrar
             // 
-            this.button_Cadastrar.Location = new System.Drawing.Point(265, 185);
+            this.button_Cadastrar.Location = new System.Drawing.Point(173, 184);
             this.button_Cadastrar.Name = "button_Cadastrar";
-            this.button_Cadastrar.Size = new System.Drawing.Size(114, 34);
-            this.button_Cadastrar.TabIndex = 11;
+            this.button_Cadastrar.Size = new System.Drawing.Size(110, 34);
+            this.button_Cadastrar.TabIndex = 4;
             this.button_Cadastrar.Text = "&Cadastrar";
             this.button_Cadastrar.UseVisualStyleBackColor = true;
             this.button_Cadastrar.Click += new System.EventHandler(this.button_Cadastrar_Click);
+            // 
+            // button_Limpar
+            // 
+            this.button_Limpar.Location = new System.Drawing.Point(289, 184);
+            this.button_Limpar.Name = "button_Limpar";
+            this.button_Limpar.Size = new System.Drawing.Size(102, 34);
+            this.button_Limpar.TabIndex = 5;
+            this.button_Limpar.Text = "&Limpar";
+            this.button_Limpar.UseVisualStyleBackColor = true;
+            this.button_Limpar.Click += new System.EventHandler(this.button_Limpar_Click);
             // 
             // Form_Cliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(391, 282);
+            this.ClientSize = new System.Drawing.Size(403, 248);
+            this.Controls.Add(this.button_Limpar);
             this.Controls.Add(this.button_Cadastrar);
             this.Controls.Add(this.maskedTextBox_Telefone);
             this.Controls.Add(this.maskedTextBox_CPF);
@@ -149,5 +161,6 @@
         private System.Windows.Forms.MaskedTextBox maskedTextBox_CPF;
         private System.Windows.Forms.MaskedTextBox maskedTextBox_Telefone;
         private System.Windows.Forms.Button button_Cadastrar;
+        private System.Windows.Forms.Button button_Limpar;
     }
 }

@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-using System.Windows.Forms; //testes
+//using System.Windows.Forms; //testes
 
 namespace Vendas
 {
@@ -58,7 +58,7 @@ namespace Vendas
             catch (Exception erro)
             {
                 tran.Rollback();
-                MessageBox.Show(this.Nome + this.Cpf + erro);
+                //MessageBox.Show(this.Nome + this.Cpf + erro);
                 return false;
 
             }

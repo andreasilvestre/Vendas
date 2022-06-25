@@ -16,5 +16,25 @@ namespace Vendas
         {
             InitializeComponent();
         }
+
+        private void Limpar()
+        {
+            textBox_Nome.Text = "";
+            textBox_CodEAN.Text = "";
+            textBox_Preco.Text = "";
+            textBox_Estoque.Text = "";
+        }
+        private void button_Cadastrar_Click(object sender, EventArgs e)
+        {
+            Produto produto = new Produto(textBox_Nome.Text, int.Parse(textBox_CodEAN.Text), float.Parse(textBox_Preco.Text), int.Parse(textBox_Estoque.Text));
+            MessageBox.Show("Nome: " + produto.Nome + "\nPreço: " + produto.Preco);
+            produto.gravarProduto();
+            //carregarListView();
+        }
+
+        private void button_Limpar_Click(object sender, EventArgs e)
+        {
+            Limpar();
+        }
     }
 }

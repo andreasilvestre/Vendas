@@ -82,6 +82,7 @@
     <Compile Include="Form_Vender.Designer.cs">
       <DependentUpon>Form_Vender.cs</DependentUpon>
     </Compile>
+    <Compile Include="Produto.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form_Cliente.resx">

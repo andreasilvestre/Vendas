@@ -17,6 +17,14 @@ namespace Vendas
             InitializeComponent();
         }
 
+        private void Limpar()
+        {
+            textBox_Nome.Text = "";
+            maskedTextBox_CPF.Text = "";
+            maskedTextBox_Telefone.Text = "";
+            textBox_Email.Text = "";
+        }
+
         private void button_Cadastrar_Click(object sender, EventArgs e)
         {
             Cliente cliente = new Cliente(textBox_Nome.Text,maskedTextBox_CPF.Text, maskedTextBox_Telefone.Text,textBox_Email.Text);
@@ -24,6 +32,11 @@ namespace Vendas
             cliente.gravarCliente();
             //carregarListView();
 
+        }
+
+        private void button_Limpar_Click(object sender, EventArgs e)
+        {
+            Limpar();
         }
     }
 }
