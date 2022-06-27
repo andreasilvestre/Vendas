@@ -27,9 +27,12 @@ namespace Vendas
         private void button_Cadastrar_Click(object sender, EventArgs e)
         {
             Produto produto = new Produto(textBox_Nome.Text, int.Parse(textBox_CodEAN.Text), float.Parse(textBox_Preco.Text), int.Parse(textBox_Estoque.Text));
-            MessageBox.Show("Nome: " + produto.Nome + "\nPreço: " + produto.Preco);
-            produto.gravarProduto();
-            //carregarListView();
+            //MessageBox.Show("Nome: " + produto.Nome + "\nPreço: " + produto.Preco);
+            if (produto.gravarProduto())
+            {
+                MessageBox.Show("Produto cadastrado com sucesso.");
+            }
+
         }
 
         private void button_Limpar_Click(object sender, EventArgs e)

@@ -31,8 +31,9 @@ namespace Vendas
 
         private void venderToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Form_Vender vender = new Form_Vender(); 
+            Form_Vender vender = new Form_Vender();
             vender.ShowDialog();
+            
         }
 
         private void sairToolStripMenuItem_Click(object sender, EventArgs e)

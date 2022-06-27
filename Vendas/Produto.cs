@@ -15,6 +15,7 @@ namespace Vendas
         int codEAN;
         float preco;
         int estoque;
+        int id_Produto;
 
         public Produto(string nome, int codEAN, float preco, int estoque)
         {
@@ -24,6 +25,23 @@ namespace Vendas
             Estoque = estoque;
         }
 
+        /// <summary>
+        /// Este construtor (polimorfismo) foi necessário criar para buscar do banco de dados todos os valores, inclusive o id_Produto
+        /// a diferença do construtor acima é o id_Produto
+        /// </summary>
+        /// <param name="nome"></param>
+        /// <param name="codEAN"></param>
+        /// <param name="preco"></param>
+        /// <param name="estoque"></param>
+        /// <param name="id_Produto"></param>
+        public Produto(string nome, int codEAN, float preco, int estoque, int id_Produto)
+        {
+            Nome = nome;
+            CodEAN = codEAN;
+            Preco = preco;
+            Estoque = estoque;
+            Id_Produto = id_Produto;
+        }
 
         public bool gravarProduto()
         {
@@ -66,9 +84,52 @@ namespace Vendas
             }
         }
 
+        public static List<Produto> gerarListaProdutos()
+        {
+
+            List<Produto> listaProdutos = new List<Produto>();
+
+            Banco banco = new Banco();
+            SqlConnection cn = banco.abrirConexao();
+
+            SqlTransaction tran = cn.BeginTransaction();
+            SqlCommand command = new SqlCommand();
+
+            command.Connection = cn;
+            command.Transaction = tran;
+            command.CommandType = CommandType.Text;
+
+            command.CommandText = "select * from produto order by nome;";
+
+            try
+            {
+                SqlDataReader leitor = command.ExecuteReader();
+
+                //MessageBox.Show("Conexão ok");
+
+                while (leitor.Read())
+                {
+                    // sem o id_Produto por enquanto - pendencia - na fila
+                    listaProdutos.Add(new Produto(leitor["nome"].ToString(), int.Parse(leitor["codEAN"].ToString()), float.Parse(leitor["preco"].ToString()), int.Parse(leitor["estoque"].ToString()), int.Parse(leitor["id_Produto"].ToString())));
+                }
+            }
+            catch (Exception erro)
+            {
+                //throw;
+                MessageBox.Show("Erro: " + erro);
+            }
+
+            finally
+            {
+                banco.fecharConexao();
+            }
+            return listaProdutos;
+        }
+
         public string Nome { get => nome; set => nome = value; }
         public int CodEAN { get => codEAN; set => codEAN = value; }
         public float Preco { get => preco; set => preco = value; }
         public int Estoque { get => estoque; set => estoque = value; }
+        public int Id_Produto { get => id_Produto; set => id_Produto = value; }
     }
 }

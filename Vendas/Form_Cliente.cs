@@ -28,9 +28,11 @@ namespace Vendas
         private void button_Cadastrar_Click(object sender, EventArgs e)
         {
             Cliente cliente = new Cliente(textBox_Nome.Text,maskedTextBox_CPF.Text, maskedTextBox_Telefone.Text,textBox_Email.Text);
-            MessageBox.Show("Nome: " + cliente.Nome + "\nTelefone: " + cliente.Telefone);
-            cliente.gravarCliente();
-            //carregarListView();
+            //MessageBox.Show("Nome: " + cliente.Nome + "\nTelefone: " + cliente.Telefone);
+            if (cliente.gravarCliente())
+            {
+                MessageBox.Show("Cliente cadastrado com sucesso.");
+            }
 
         }
 
