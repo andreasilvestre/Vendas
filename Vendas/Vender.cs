@@ -58,8 +58,12 @@ namespace Vendas
             try
             {
                 command.ExecuteNonQuery();
-                
                 tran.Commit();
+
+                //não funcionou - colaboradores Alan Capelari/Leonardo Bertinatti
+                //this.Id_Venda = int.Parse(command.ExecuteScalar().ToString());
+                //this.Id_Venda = (int)command.ExecuteScalar();
+
                 return true;
             }
             catch (Exception erro)
@@ -97,12 +101,13 @@ namespace Vendas
             {
                 SqlDataReader leitor = command.ExecuteReader();
                 leitor.Read();
+
+                //guarda o id da venda para gravar os itens de venda
                 this.Id_Venda = int.Parse(leitor["Id_Venda"].ToString());
 
             }
             catch (Exception erro)
             {
-                //não sei o que fazer????
                 //throw;
                 MessageBox.Show("erro buscar id_venda: " + erro);
 
@@ -131,6 +136,9 @@ namespace Vendas
                 command.Transaction = tran;
                 command.CommandType = CommandType.Text;
 
+                //novo jeito de fazer insert - redução de código - ver com professor solução mais enxuta de código
+                //command.CommandText = $"Insert into ItemVenda values ({this.Id_Venda}, {i.Id_Produto}, {i.ValorUnitario}, {i.Quantidade}, {i.valorTotalItem});";
+
                 command.CommandText = "Insert into ItemVenda values (@id_Venda, @Id_Produto, @ValorUnitario, @Quantidade, @ValorTotal);";
 
                 command.Parameters.Add("@id_Venda", SqlDbType.Int);
@@ -155,8 +163,57 @@ namespace Vendas
                 catch (Exception erro)
                 {
                     tran.Rollback();
-                    MessageBox.Show("Id_venda= " + i.id_Venda.ToString());
+
+                    //verificação de erros
+                    MessageBox.Show("Id_venda= " + this.Id_Venda.ToString());
                     MessageBox.Show("erro gravarItensVenda: " + erro);
+
+                }
+
+                finally
+                {
+                    banco.fecharConexao();
+                }
+
+            }
+            alterarEstoque(listaItensVenda);
+            return true;
+
+        }
+        public bool alterarEstoque(List<Vender> listaItensVenda)
+        {
+
+            foreach (Vender i in listaItensVenda)
+            {
+
+                Banco banco = new Banco();
+                SqlConnection cn = banco.abrirConexao();
+
+                SqlTransaction tran = cn.BeginTransaction();
+                SqlCommand command = new SqlCommand();
+
+                command.Connection = cn;
+                command.Transaction = tran;
+                command.CommandType = CommandType.Text;
+
+                command.CommandText =$"update produto set estoque = estoque - {i.Quantidade} where id_produto = {i.Id_Produto};";
+
+                //para deletar
+                //command.CommandText = "Delete from usuario where idUsuario=@idUsuario;";
+                //command.Parameters.AddWithValue("@idUsuario", idUsuario);
+
+                try
+                {
+                    command.ExecuteNonQuery();
+
+                    tran.Commit();
+                }
+                catch (Exception erro)
+                {
+                    tran.Rollback();
+
+                    //verificação de erros
+                    MessageBox.Show("erro alterar Estoque: " + erro);
 
                 }
 

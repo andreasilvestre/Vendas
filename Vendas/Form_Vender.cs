@@ -62,6 +62,7 @@ namespace Vendas
 
 
 
+        //carrega o combobox com o nome dos clientes
         private void exibirClientes()
         {
 
@@ -73,6 +74,8 @@ namespace Vendas
             }
 
         }
+
+        //carrega o combobox de produtos atualizados
         private void exibirProdutos()
         {
 
@@ -139,6 +142,32 @@ namespace Vendas
 
         }
 
+        private void limparTela()
+        {
+            //limpa dados cliente
+            comboBox_Cliente.Items.Clear();
+            textBox_DadosCliente.Text = "";
+            foreach (Cliente i in listaClientes)
+            {
+                comboBox_Cliente.Items.Add(i.Nome);
+            }
+
+            //limpa dados produto
+            comboBox_Produto.Items.Clear();
+            textBox_DadosProduto.Text = "";
+            foreach (Produto i in listaProdutos)
+            {
+                comboBox_Produto.Items.Add(i.Nome);
+            }
+
+            //itens de venda e quantidade
+            listView_Produtos.Items.Clear();
+            textBox_Quantidade.Text = "1";
+            contaProdutos = 0;
+            ValorVenda = 0;
+            EstoqueProdutoSelecionado = 0;
+        }
+
 
         /// <summary>
         /// adiciona o produto selecionado na tela - componente ListView
@@ -150,7 +179,7 @@ namespace Vendas
             float ValorTotalItem = Quantidade * PrecoProdutoSelecionado;
             ValorVenda = ValorVenda + ValorTotalItem;
 
-            
+            //adiciona os itens do carrinho na lista para posterior gravação da Venda.
             listaItensVenda.Add(new Vender(id_ClienteSelecionado, ValorVenda, id_ProdutoSelecionado, PrecoProdutoSelecionado, Quantidade, ValorTotalItem));
             
 
@@ -261,48 +290,28 @@ namespace Vendas
 
         private void button_ConfirmarVenda_Click(object sender, EventArgs e)
         {
-            //pendencia urgente - estoque: update - baixar estoque
 
-            //Produto produto = new Produto(textBox_Nome.Text, int.Parse(textBox_CodEAN.Text), float.Parse(textBox_Preco.Text), int.Parse(textBox_Estoque.Text));
             Vender vender = new Vender();
 
             if (vender.gravarVenda(id_ClienteSelecionado, ValorVenda))
             {
                 vender.buscarIdVenda();
-                vender.gravarItensVenda(listaItensVenda);
 
-                //AtualizarEstoque(); pendencia
-
-                MessageBox.Show("Venda cadastrada com sucesso.");
+                if(vender.gravarItensVenda(listaItensVenda))
+                {
+                    limparTela();
+                    exibirProdutos(); //recarrega produtos após atualização do estoque
+                    MessageBox.Show("Venda cadastrada com sucesso.");
+                }
             }
 
         }
 
         private void button_LimparTela_Click(object sender, EventArgs e)
         {
-            //melhoria - organizar numa função
 
-            //limpa dados cliente
-            comboBox_Cliente.Items.Clear();
-            textBox_DadosCliente.Text = "";
-            foreach (Cliente i in listaClientes)
-            {
-                comboBox_Cliente.Items.Add(i.Nome);
-            }
+            limparTela();
 
-            //limpa dados produto
-            comboBox_Produto.Items.Clear();
-            textBox_DadosProduto.Text = "";
-            foreach (Produto i in listaProdutos)
-            {
-                comboBox_Produto.Items.Add(i.Nome);
-            }
-
-            //itens de venda e quantidade
-            listView_Produtos.Items.Clear();
-            textBox_Quantidade.Text = "1";
-            contaProdutos = 0;
-            ValorVenda = 0;
         }
     }
 }

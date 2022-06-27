@@ -99,7 +99,7 @@ namespace Vendas
             command.Transaction = tran;
             command.CommandType = CommandType.Text;
 
-            command.CommandText = "select * from produto order by nome;";
+            command.CommandText = "select * from produto where estoque > 0 order by nome;";
 
             try
             {

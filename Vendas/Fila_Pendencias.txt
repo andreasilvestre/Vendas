@@ -1,4 +1,3 @@
-1. Validação entrada de dados
-2. Verificação se existe - confimar nessecidade:
+1.Verificação se existe - confimar nessecidade:
 Existe Produto - código de barra?
 Existe cliente - cpf?
