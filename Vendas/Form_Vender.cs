@@ -144,21 +144,18 @@ namespace Vendas
 
         private void limparTela()
         {
-            //limpa dados cliente
-            comboBox_Cliente.Items.Clear();
+
+            //limpa tela e variáveis globais do form Vender
+
+            //limpa dados cliente - não será necessário pois o cliente não sofre alteração
+            //comboBox_Cliente.Items.Clear();
             textBox_DadosCliente.Text = "";
-            foreach (Cliente i in listaClientes)
-            {
-                comboBox_Cliente.Items.Add(i.Nome);
-            }
+           
 
             //limpa dados produto
             comboBox_Produto.Items.Clear();
             textBox_DadosProduto.Text = "";
-            foreach (Produto i in listaProdutos)
-            {
-                comboBox_Produto.Items.Add(i.Nome);
-            }
+            
 
             //itens de venda e quantidade
             listView_Produtos.Items.Clear();
