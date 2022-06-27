@@ -58,11 +58,18 @@
   <ItemGroup>
     <Compile Include="Banco.cs" />
     <Compile Include="Cliente.cs" />
+    <Compile Include="Comprar.cs" />
     <Compile Include="Form_Cliente.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form_Cliente.Designer.cs">
       <DependentUpon>Form_Cliente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form_Comprar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_Comprar.Designer.cs">
+      <DependentUpon>Form_Comprar.cs</DependentUpon>
     </Compile>
     <Compile Include="Form_Principal.cs">
       <SubType>Form</SubType>
@@ -88,6 +95,9 @@
     <Compile Include="Vender.cs" />
     <EmbeddedResource Include="Form_Cliente.resx">
       <DependentUpon>Form_Cliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_Comprar.resx">
+      <DependentUpon>Form_Comprar.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form_Principal.resx">
       <DependentUpon>Form_Principal.cs</DependentUpon>

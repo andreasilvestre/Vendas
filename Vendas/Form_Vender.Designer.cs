@@ -91,8 +91,8 @@
             this.listView_Produtos.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.id_Produto,
             this.Nome,
-            this.ValorUnitario,
             this.Quantidade,
+            this.ValorUnitario,
             this.ValorTotal});
             this.listView_Produtos.Enabled = false;
             this.listView_Produtos.HideSelection = false;

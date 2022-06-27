@@ -12,3 +12,4 @@ C:\Users\Usuario\source\repos\Vendas\Vendas\obj\Debug\Vendas.pdb
 C:\Users\Usuario\source\repos\Vendas\Vendas\obj\Debug\Vendas.Form_Cliente.resources
 C:\Users\Usuario\source\repos\Vendas\Vendas\obj\Debug\Vendas.Form_Produto.resources
 C:\Users\Usuario\source\repos\Vendas\Vendas\obj\Debug\Vendas.Form_Vender.resources
+C:\Users\Usuario\source\repos\Vendas\Vendas\obj\Debug\Vendas.Form_Comprar.resources

@@ -78,6 +78,7 @@ namespace Vendas
         //carrega o combobox de produtos atualizados
         private void exibirProdutos()
         {
+            listaProdutos.Clear();
 
             listaProdutos = Produto.gerarListaProdutos();
             comboBox_Produto.Items.Clear();
@@ -134,7 +135,6 @@ namespace Vendas
                     PrecoProdutoSelecionado = i.Preco;
                     EstoqueProdutoSelecionado = i.Estoque;
 
-                    textBox_Quantidade.Text = "";
                     textBox_Quantidade.Text = "1";
 
                 }
@@ -165,7 +165,11 @@ namespace Vendas
             textBox_Quantidade.Text = "1";
             contaProdutos = 0;
             ValorVenda = 0;
+            textBox_ValorTotal.Text = "";
             EstoqueProdutoSelecionado = 0;
+
+            //lista de itens
+            listaItensVenda.Clear();
         }
 
 
@@ -186,10 +190,10 @@ namespace Vendas
             listView_Produtos.Items.Add(id_ProdutoSelecionado.ToString());
             listView_Produtos.Items[contaProdutos].SubItems.Add(NomeProdutoSelecionado.ToString());
             listView_Produtos.Items[contaProdutos].SubItems.Add(Quantidade.ToString());
-            listView_Produtos.Items[contaProdutos].SubItems.Add(PrecoProdutoSelecionado.ToString());
-            listView_Produtos.Items[contaProdutos].SubItems.Add(ValorTotalItem.ToString());
+            listView_Produtos.Items[contaProdutos].SubItems.Add(PrecoProdutoSelecionado.ToString("C"));
+            listView_Produtos.Items[contaProdutos].SubItems.Add(ValorTotalItem.ToString("C"));
 
-            textBox_ValorTotal.Text = ValorVenda.ToString();
+            textBox_ValorTotal.Text = ValorVenda.ToString("C");
 
             // conta os produtos adicionados
             contaProdutos++;
@@ -301,7 +305,7 @@ namespace Vendas
                 {
                     limparTela();
                     exibirProdutos(); //recarrega produtos após atualização do estoque
-                    MessageBox.Show("Venda cadastrada com sucesso.");
+                    MessageBox.Show("Venda cadastrada com sucesso.", "Vendas");
                 }
             }
 
@@ -311,6 +315,7 @@ namespace Vendas
         {
 
             limparTela();
+            exibirProdutos();
 
         }
     }

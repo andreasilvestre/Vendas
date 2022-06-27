@@ -40,5 +40,11 @@ namespace Vendas
         {
             Application.Exit();
         }
+
+        private void comprarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form_Comprar vender = new Form_Comprar();
+            vender.ShowDialog();
+        }
     }
 }

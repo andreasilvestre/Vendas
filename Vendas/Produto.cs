@@ -126,6 +126,50 @@ namespace Vendas
             return listaProdutos;
         }
 
+        //foi necessário criar/duplicar pq preciso popular a tela Compras com produtos zerados - ou seja todos
+        //Futuro - passar parametro qual tela está chamando: Vender ou Comprar
+        public static List<Produto> gerarListaProdutosCadastrados()
+        {
+
+            List<Produto> listaProdutos = new List<Produto>();
+
+            Banco banco = new Banco();
+            SqlConnection cn = banco.abrirConexao();
+
+            SqlTransaction tran = cn.BeginTransaction();
+            SqlCommand command = new SqlCommand();
+
+            command.Connection = cn;
+            command.Transaction = tran;
+            command.CommandType = CommandType.Text;
+
+            command.CommandText = "select * from produto order by nome;";
+
+            try
+            {
+                SqlDataReader leitor = command.ExecuteReader();
+
+                //MessageBox.Show("Conexão ok");
+
+                while (leitor.Read())
+                {
+                    // sem o id_Produto por enquanto - pendencia - na fila
+                    listaProdutos.Add(new Produto(leitor["nome"].ToString(), int.Parse(leitor["codEAN"].ToString()), float.Parse(leitor["preco"].ToString()), int.Parse(leitor["estoque"].ToString()), int.Parse(leitor["id_Produto"].ToString())));
+                }
+            }
+            catch (Exception erro)
+            {
+                //throw;
+                MessageBox.Show("Erro: " + erro);
+            }
+
+            finally
+            {
+                banco.fecharConexao();
+            }
+            return listaProdutos;
+        }
+
         public string Nome { get => nome; set => nome = value; }
         public int CodEAN { get => codEAN; set => codEAN = value; }
         public float Preco { get => preco; set => preco = value; }
